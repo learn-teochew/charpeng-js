@@ -1,0 +1,103 @@
+@font-face {
+  font-family: GentiumPlusW;
+  src: url("GentiumPlus-Regular.woff");
+}
+
+body {
+  font-size: 1.1rem;
+}
+
+body {
+  font-family: GentiumPlusW, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1,
+h2 {
+  font-family: sans-serif;
+}
+
+textarea {
+  width: 95%;
+  display: block;
+  margin: auto;
+  padding: 0.5em;
+  font-size: 1.2em;
+  color: darkgreen;
+  background-color: white;
+}
+
+button,
+legend,
+label {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  margin: auto;
+  font-size: 1em;
+}
+
+div {
+  margin: 0.8em;
+  padding: 0.8em;
+  font-size: inherit;
+}
+
+.radio {
+  margin: 0em;
+  padding: 0em;
+}
+
+.lightblue {
+  background: lightblue;
+}
+
+.lightpink {
+  background: lightpink;
+}
+
+#outputdiv {
+  font-size: 1.2em;
+  background: white;
+  padding: 0.5em;
+}
+
+#outputdiv a:link {
+  color: darkblue;
+  text-decoration: none;
+}
+
+#outputdiv a:visited {
+  color: darkblue;
+  text-decoration: none;
+}
+
+#outputdiv a:hover {
+  color: lightblue;
+  text-decoration: none;
+}
+
+fieldset {
+  display: block;
+  width: 95%;
+  margin: auto;
+  padding: 0.5em;
+}
+
+#fieldsetdiv {
+  display: block;
+}
+
+@media screen and (min-width: 800px) {
+  fieldset {
+    display: inline-block;
+    width: 45%;
+  }
+
+  #fieldsetdiv {
+    display: flex;
+  }
+}
