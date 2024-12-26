@@ -3,12 +3,30 @@ import * as cd from "./dieziu_gdpi.dict.js";
 function processLine(line) {
   let out = [];
   for (const c of line) {
-    if ( c in cd.chardict ) {
-      out.push("<ruby>" + '<a href="https://en.wiktionary.org/wiki/' + c + '">' + c + '</a>' + "<rt>" + cd.chardict[c].join("<br/>") + "</rt></ruby>");
+    if (c in cd.chardict) {
+      out.push(
+        "<ruby>" +
+          '<a href="https://en.wiktionary.org/wiki/' +
+          c +
+          '">' +
+          c +
+          "</a>" +
+          "<rt>" +
+          cd.chardict[c].join("<br/>") +
+          "</rt></ruby>",
+      );
     } else if (c.match(/\p{Script=Hani}/u)) {
-      out.push('<span class="unmatched">' + '<a href="https://en.wiktionary.org/wiki/' + c + '">' + c + '</a>' + '</span>');
+      out.push(
+        '<span class="unmatched">' +
+          '<a href="https://en.wiktionary.org/wiki/' +
+          c +
+          '">' +
+          c +
+          "</a>" +
+          "</span>",
+      );
     } else {
-      out.push( c );
+      out.push(c);
     }
   }
   return out.join("");

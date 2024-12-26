@@ -9,19 +9,19 @@ const readline = require("readline");
 // read in dictionary data
 let chardict = {};
 const dicttsv = fs.readFileSync("dieziu_gdpi.dict.tsv", "utf-8");
-dicttsv.split(/\r?\n/).forEach(line => {
+dicttsv.split(/\r?\n/).forEach((line) => {
   try {
     let [han, pengim] = line.split(/\t/);
-    if ( han in chardict ) {
+    if (han in chardict) {
       chardict[han].push(pengim);
     } else {
       chardict[han] = [pengim];
     }
-  } catch(err) {
+  } catch (err) {
     console.error(err);
   }
 });
 
-fs.writeFile('dieziu_gdpi.dict.json', JSON.stringify(chardict), (err) => {
+fs.writeFile("dieziu_gdpi.dict.json", JSON.stringify(chardict), (err) => {
   console.log(err);
 });
