@@ -1,12 +1,12 @@
 import * as lim from "./lim_1997_gdpi.dict.js";
 import * as cd from "./dieziu_gdpi.dict.js";
 
-function processLine(line) {
+function processLine(line, chardict) {
   let out = [];
   for (const c of line) {
-    if (c in cd.chardict) {
+    if (c in chardict) {
       let readings = [];
-      for (const r of cd.chardict[c]) {
+      for (const r of chardict[c]) {
         // readings.push(r[0]);
         if (r[1] && r[1].includes("文")) {
           readings.push('<span style="color:blue;">' + r[0] + '</span>');
@@ -49,9 +49,16 @@ let button = document.getElementById("annotatebutton");
 
 button.addEventListener("click", function () {
   let input = document.getElementById("input").value;
+  let chooseDict = document.querySelector(
+    'input[name="choose_dict"]:checked',
+  ).value;
   let out = [];
   for (const l of input.split(/\n/)) {
-    out.push(processLine(l));
+    if (chooseDict == "ghou_1983") {
+      out.push(processLine(l, cd.chardict));
+    } else if (chooseDict == "lim_1997") {
+      out.push(processLine(l, lim.chardict));
+    }
   }
   document.getElementById("outputdiv").innerHTML = out.join("<br/>");
 });
