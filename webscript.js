@@ -1,9 +1,21 @@
+import * as lim from "./lim_1997_gdpi.dict.js";
 import * as cd from "./dieziu_gdpi.dict.js";
 
 function processLine(line) {
   let out = [];
   for (const c of line) {
     if (c in cd.chardict) {
+      let readings = [];
+      for (const r of cd.chardict[c]) {
+        // readings.push(r[0]);
+        if (r[1] && r[1].includes("文")) {
+          readings.push('<span style="color:blue;">' + r[0] + '</span>');
+        } else if (r[1] && r[1].includes("訓")) {
+          readings.push('<span style="color:green;">' + r[0] + '</span>');
+        } else {
+          readings.push(r[0]);
+        }
+      }
       out.push(
         "<ruby>" +
           '<a href="https://en.wiktionary.org/wiki/' +
@@ -12,7 +24,7 @@ function processLine(line) {
           c +
           "</a>" +
           "<rt>" +
-          cd.chardict[c].join("<br/>") +
+          readings.join("<br/>") +
           "</rt></ruby>",
       );
     } else if (c.match(/\p{Script=Hani}/u)) {
