@@ -80,6 +80,11 @@ div {
   text-decoration: none;
 }
 
+ruby {
+  margin:0.1em;
+}
+
+
 fieldset {
   display: block;
   width: 95%;

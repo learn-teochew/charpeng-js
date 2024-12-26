@@ -11,7 +11,7 @@ function processLine(line) {
       out.push( c );
     }
   }
-  return out.join(" ");
+  return out.join("");
 }
 
 // first button element
