@@ -103,9 +103,9 @@ button.addEventListener("click", function () {
       out.push(processLine(l, wd.chardict));
     }
   }
-  document.getElementById("outputdiv").innerHTML = out.join("<br/>");
+  document.getElementById("outputdiv").innerHTML = "<p>Individual character readings • 單字注音</p><p>" + out.join("<br/>") + "</p>";
   let out2 = annotate_words(input, wd.chardict, 5);
   console.log(input);
   document.getElementById("outputdiv2").innerHTML =
-    "Potential words found: <ul>" + out2.join("") + "</ul>";
+    "<p>Potential words found</p><ul>" + out2.join("") + "</ul>";
 });
