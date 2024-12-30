@@ -10,9 +10,9 @@ function processLine(line, chardict) {
       for (const r of chardict[c]) {
         // readings.push(r[0]);
         if (r[1] && r[1].includes("文")) {
-          readings.push('<span style="color:blue;">' + r[0] + '</span>');
+          readings.push('<span style="color:blue;">' + r[0] + "</span>");
         } else if (r[1] && r[1].includes("訓")) {
-          readings.push('<span style="color:green;">' + r[0] + '</span>');
+          readings.push('<span style="color:green;">' + r[0] + "</span>");
         } else {
           readings.push(r[0]);
         }
@@ -48,9 +48,9 @@ function processLine(line, chardict) {
 function scan_input(text, n, dictionary) {
   let indices = [];
   let num_chunks = text.length - n + 1;
-  for (let i = 0; i < num_chunks; i++ ) {
-    let slice = text.slice(i, i+n);
-    if ( slice in dictionary ) {
+  for (let i = 0; i < num_chunks; i++) {
+    let slice = text.slice(i, i + n);
+    if (slice in dictionary) {
       let pron = dictionary[slice].map((x) => x[0]);
       indices.push([i, slice, pron]);
     }
@@ -68,11 +68,19 @@ function scan_input_range(text, dictionary, n_min = 2, n_max = 5) {
   return all_output;
 }
 
-function annotate_words(text, dictionary, n_max=5) {
+function annotate_words(text, dictionary, n_max = 5) {
   let raw = scan_input_range(text, dictionary, 2, n_max);
   let out = [];
   for (var elem of raw) {
-    out.push('<li><a href="https://en.wiktionary.org/wiki/' + elem[1] + '">' + elem[1] + '</a> : ' + elem[2].join(" / ") + "</li>\n");
+    out.push(
+      '<li><a href="https://en.wiktionary.org/wiki/' +
+        elem[1] +
+        '">' +
+        elem[1] +
+        "</a> : " +
+        elem[2].join(" / ") +
+        "</li>\n",
+    );
   }
   return out;
 }
@@ -98,5 +106,6 @@ button.addEventListener("click", function () {
   document.getElementById("outputdiv").innerHTML = out.join("<br/>");
   let out2 = annotate_words(input, wd.chardict, 5);
   console.log(input);
-  document.getElementById("outputdiv2").innerHTML = "<ul>" + out2.join("") + "</ul>";
+  document.getElementById("outputdiv2").innerHTML =
+    "Potential words found: <ul>" + out2.join("") + "</ul>";
 });

@@ -54,23 +54,23 @@ div {
   background: lightpink;
 }
 
-#outputdiv {
+.outputdiv {
   font-size: 1.2em;
-  background: white;
+  background: floralwhite;
   padding: 0.5em;
 }
 
-#outputdiv a:link {
+.outputdiv a:link {
   color: darkblue;
   text-decoration: none;
 }
 
-#outputdiv a:visited {
+.outputdiv a:visited {
   color: darkblue;
   text-decoration: none;
 }
 
-#outputdiv a:hover {
+.outputdiv a:hover {
   color: lightblue;
   text-decoration: none;
 }
