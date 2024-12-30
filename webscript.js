@@ -1,5 +1,6 @@
 import * as lim from "./lim_1997_gdpi.dict.js";
 import * as cd from "./dieziu_gdpi.dict.js";
+import * as wd from "./wiktionary.dict.js";
 
 function processLine(line, chardict) {
   let out = [];
@@ -44,6 +45,38 @@ function processLine(line, chardict) {
   return out.join("");
 }
 
+function scan_input(text, n, dictionary) {
+  let indices = [];
+  let num_chunks = text.length - n + 1;
+  for (let i = 0; i < num_chunks; i++ ) {
+    let slice = text.slice(i, i+n);
+    if ( slice in dictionary ) {
+      let pron = dictionary[slice].map((x) => x[0]);
+      indices.push([i, slice, pron]);
+    }
+  }
+  return indices;
+}
+
+function scan_input_range(text, dictionary, n_min = 2, n_max = 5) {
+  let all_output = [];
+
+  for (let i = n_max; i >= n_min; i--) {
+    all_output.push(...scan_input(text, i, dictionary));
+  }
+  all_output.sort((a, b) => a[0] - b[0]);
+  return all_output;
+}
+
+function annotate_words(text, dictionary, n_max=5) {
+  let raw = scan_input_range(text, dictionary, 2, n_max);
+  let out = [];
+  for (var elem of raw) {
+    out.push('<li><a href="https://en.wiktionary.org/wiki/' + elem[1] + '">' + elem[1] + '</a> : ' + elem[2].join(" / ") + "</li>\n");
+  }
+  return out;
+}
+
 // first button element
 let button = document.getElementById("annotatebutton");
 
@@ -58,7 +91,12 @@ button.addEventListener("click", function () {
       out.push(processLine(l, cd.chardict));
     } else if (chooseDict == "lim_1997") {
       out.push(processLine(l, lim.chardict));
+    } else if (chooseDict == "wiktionary") {
+      out.push(processLine(l, wd.chardict));
     }
   }
   document.getElementById("outputdiv").innerHTML = out.join("<br/>");
+  let out2 = annotate_words(input, wd.chardict, 5);
+  console.log(input);
+  document.getElementById("outputdiv2").innerHTML = "<ul>" + out2.join("") + "</ul>";
 });

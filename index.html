@@ -43,24 +43,20 @@
     <div class="lightblue">
       <h2>Input • 輸入</h2>
       <textarea id="input" name="input" rows="6">
-活燈看完看紗燈　頭屏董卓鳳儀亭　貂嬋共伊在戲耍　呂布氣到手搥胸
-二屏秦瓊倒銅旗　三屏李恕射金錢　四屏梨花在咕毒　五屏郭槐賣胭脂
-六屏點將楊延昭　七屏張飛戰馬超　八屏孔明空城計　九屏李旦探鳳嬌
-十屏關爺過五關　十一昭君去和畨　十二趙雲救阿斗　十三劉備取西川
-十四大戰魏文通　十五走雪韓文公　阿千阿萬遇着虎　十六鄭恩下河東
+清朝尾，光緒二十年左右，天字號個漢奸湖南儂曾國藩個孫曾枝倨，伊個頭特別大，潮州儂暗靜住叫伊做曾大頭。大頭伊是公子阿舍出身，全個唔曉世情，特別好惹事。
       </textarea>
     </div>
 
     <div class="lightblue">
       <fieldset>
-        <legend>Choose dictionary source</legend>
-        <div class="radio">
-          <input type="radio" id="dict_ghou_1983" name="choose_dict" value="ghou_1983" />
-          <label for="dict_ghou_1983">《潮州音字典》吳華重、林適民主編，廣東人民出版社（1983）</label>
-        </div>
+        <legend>Dictionary for character readings</legend>
         <div class="radio">
           <input type="radio" id="dict_lim_1997" name="choose_dict" value="lim_1997" checked />
           <label for="dict_lim_1997">《新編潮州音字典》林倫倫主編，汕頭大學出版社（1997修訂本）</label>
+        </div>
+        <div class="radio">
+          <input type="radio" id="dict_ghou_1983" name="choose_dict" value="ghou_1983" />
+          <label for="dict_ghou_1983">《潮州音字典》吳華重、林適民主編，廣東人民出版社（1983）</label>
         </div>
       </fieldset>
     </div>
@@ -75,6 +71,8 @@
         <span style="color: grey">[output will appear here]</span>
       </div>
       <p>Colors: <span style="color:blue">literary reading 文讀音</span>; <span style="color:green">semantic gloss reading 訓讀音</span>.</p>
+      <div id="outputdiv2">
+      </div>
     </div>
     <div>
       <h2>Details</h2>
@@ -89,16 +87,12 @@
         <ul>
           <li>《潮州音字典》吳華重、林適民主編，廣東人民出版社（1983）, digitized by 騰達 (<a href="https://github.com/kahaani/dieghv">source</a>). Teochew prefectural city pronunciation; literary/gloss reading data not available.</li>
           <li>《新編潮州音字典》林倫倫主編，汕頭大學出版社（1997修訂本）. Swatow pronunciation; literary/gloss reading data available.</li>
+          <li>Word data is from English Wiktionary (version 2022-01-01), which is released under a CC-BY-SA 4.0 license; refer to linked entries for contributor information.</li>
         </ul>
       </p>
 
       <p>
-        Example text is from
-        <a
-          href="https://zh.wikisource.org/wiki/%E6%96%B0%E7%B7%A8%E7%99%BE%E6%88%B2%E5%90%8D"
-          >新編百戲名</a
-        >
-        ("Names of a Hundred Opera Pieces", a Teochew songbook poem).
+        Example text is from 《潮州方言》李永明著，中華書局（1959年）.
       </p>
       <p>
         <strong>NB: Still in beta testing!</strong>
