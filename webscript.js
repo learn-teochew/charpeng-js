@@ -111,5 +111,5 @@ button.addEventListener("click", function () {
   document.getElementById("outputdiv").innerHTML = "<p>Individual character readings • 單字注音</p><p>" + out.join("<br/>") + "</p>";
   let out2 = annotate_words(input, wd.chardict, 5);
   document.getElementById("outputdiv2").innerHTML =
-    "<p>Potential words found</p><ul>" + out2.join("") + "</ul>";
+    "<p>Polysyllabic words • 複詞</p><ul>" + out2.join("") + "</ul>";
 });
