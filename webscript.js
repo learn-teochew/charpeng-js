@@ -70,17 +70,22 @@ function scan_input_range(text, dictionary, n_min = 2, n_max = 5) {
 
 function annotate_words(text, dictionary, n_max = 5) {
   let raw = scan_input_range(text, dictionary, 2, n_max);
+  let odict = {};
   let out = [];
   for (var elem of raw) {
-    out.push(
-      '<li><a href="https://en.wiktionary.org/wiki/' +
-        elem[1] +
-        '">' +
-        elem[1] +
-        "</a> : " +
-        elem[2].join(" / ") +
-        "</li>\n",
-    );
+    // remove duplicates
+    if (!(elem[1] in odict)) {
+      odict[elem[1]] = true;
+      out.push(
+        '<li><a href="https://en.wiktionary.org/wiki/' +
+          elem[1] +
+          '">' +
+          elem[1] +
+          "</a> : " +
+          elem[2].join(" / ") +
+          "</li>\n",
+      );
+    }
   }
   return out;
 }
@@ -105,7 +110,6 @@ button.addEventListener("click", function () {
   }
   document.getElementById("outputdiv").innerHTML = "<p>Individual character readings • 單字注音</p><p>" + out.join("<br/>") + "</p>";
   let out2 = annotate_words(input, wd.chardict, 5);
-  console.log(input);
   document.getElementById("outputdiv2").innerHTML =
     "<p>Potential words found</p><ul>" + out2.join("") + "</ul>";
 });
